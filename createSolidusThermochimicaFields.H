@@ -1,8 +1,23 @@
+volScalarField FLiNaK
+(
+    IOobject
+    (
+        "FLiNaK_Solid",
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::AUTO_WRITE
+    ),
+    mesh,
+    dimensionedScalar("", dimless, 0)
+);
+
+
     volScalarField SALTsoln
     (
         IOobject
         (
-            "Liquid",
+            "FLiNaK_Liquid",
             runTime.timeName(),
             mesh,
             IOobject::NO_READ,
@@ -16,7 +31,7 @@
     (
         IOobject
         (
-            "solid1",
+            "Phase_LiF_NaF_KF",
             runTime.timeName(),
             mesh,
             IOobject::NO_READ,
@@ -30,7 +45,7 @@
     (
         IOobject
         (
-            "NaF_KF",
+            "Phase_NaF_KF",
             runTime.timeName(),
             mesh,
             IOobject::NO_READ,
@@ -44,7 +59,91 @@
     (
         IOobject
         (
-            "LiF_NaF",
+            "Phase_LiF_NaF",
+            runTime.timeName(),
+            mesh,
+            IOobject::NO_READ,
+            IOobject::AUTO_WRITE
+        ),
+        mesh,
+        dimensionedScalar("", dimless, 0)
+    );
+
+    volScalarField LiF
+    (
+        IOobject
+        (
+            "LiF",
+            runTime.timeName(),
+            mesh,
+            IOobject::NO_READ,
+            IOobject::AUTO_WRITE
+        ),
+        mesh,
+        dimensionedScalar("", dimless, 0)
+    );
+
+    volScalarField NaF
+    (
+        IOobject
+        (
+            "NaF",
+            runTime.timeName(),
+            mesh,
+            IOobject::NO_READ,
+            IOobject::AUTO_WRITE
+        ),
+        mesh,
+        dimensionedScalar("", dimless, 0)
+    );
+
+    volScalarField KF
+    (
+        IOobject
+        (
+            "KF",
+            runTime.timeName(),
+            mesh,
+            IOobject::NO_READ,
+            IOobject::AUTO_WRITE
+        ),
+        mesh,
+        dimensionedScalar("", dimless, 0)
+    );
+
+    volScalarField LaK3F6
+    (
+        IOobject
+        (
+            "LaK3F6_solid",
+            runTime.timeName(),
+            mesh,
+            IOobject::NO_READ,
+            IOobject::AUTO_WRITE
+        ),
+        mesh,
+        dimensionedScalar("", dimless, 0)
+    );
+
+    volScalarField CeF3
+    (
+        IOobject
+        (
+            "CeF3_solid",
+            runTime.timeName(),
+            mesh,
+            IOobject::NO_READ,
+            IOobject::AUTO_WRITE
+        ),
+        mesh,
+        dimensionedScalar("", dimless, 0)
+    );
+
+    volScalarField K_liquid
+    (
+        IOobject
+        (
+            "K_liquid",
             runTime.timeName(),
             mesh,
             IOobject::NO_READ,
