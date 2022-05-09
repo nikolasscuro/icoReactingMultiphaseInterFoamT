@@ -1,0 +1,19 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # Run from this directory
+
+# Source tutorial run functions
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+# Set application name
+application=$(getApplication)
+
+runApplication $(rm -r 0.* 1* 2* 3* 4* 5* 6* 7* 8* 9* PyFoam* log* processor* log* PyFoam*)
+runApplication blockMesh
+runApplication checkMesh
+runApplication setFields
+runApplication decomposePar
+runApplication $(pyFoamPlotRunner.py mpirun -oversubscribe -np 4 icoReactingMultiphaseInterFoamT2 -parallel | tee log)
+runApplication reconstructPar
+runApplication $(paraFoam)
+
+#------------------------------------------------------------------------------
