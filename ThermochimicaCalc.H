@@ -40,12 +40,6 @@ FORTRAN_CALL(setelementmass)(&iElement, &dMass);
 iElement = 9;
 dMass = 1.000;
 FORTRAN_CALL(setelementmass)(&iElement, &dMass);
-iElement = 58;
-dMass = 0.0015;
-FORTRAN_CALL(setelementmass)(&iElement, &dMass);
-iElement = 57;
-dMass = 0.0015;
-FORTRAN_CALL(setelementmass)(&iElement, &dMass);
 
 double dTemperature = T[i];
 double dPressure = 1;   //[atm]
