@@ -37,5 +37,5 @@ EXE_LIBS = \
     -lcompressibleMultiPhaseTurbulenceModels \
     -lblas \
     -llapack \
-    $(HOME)/Documents/OFTC3/thermochimica/obj/libthermoc.a \
-    $(HOME)/Documents/OFTC3/thermochimica/obj/libthermochimica.a
+    $(HOME)/Documents/nameOfYourFolder/thermochimica/obj/libthermoc.a \
+    $(HOME)/Documents/nameOfYourFolder/thermochimica/obj/libthermochimica.a

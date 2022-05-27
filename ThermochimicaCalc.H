@@ -55,11 +55,11 @@ FORTRAN_CALL(thermochimica)();
 
 int iflag;
 FORTRAN_CALL(checkinfothermo)(&iflag);
-printf("Debug flag: %i\n",iflag);
+//printf("Debug flag: %i\n",iflag);
 int iPrintMode = 2;
 
 FORTRAN_CALL(setprintresultsmode)(&iPrintMode);
-FORTRAN_CALL(printresults)();
+//FORTRAN_CALL(printresults)();
 
 //FORTRAN_CALL(heatcapacity)(&dHeatCapacity);
 //HeatCapacity(dHeatCapacity);
@@ -106,7 +106,7 @@ double moleFraction_KF;
 
 int info;
 FORTRAN_CALL(checkinfothermo)(&info);
-printf("Information: %i\n",info);
+//printf("Information: %i\n",info);
 
 
 #include "solidusThermochimica.H"

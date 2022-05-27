@@ -1,4 +1,4 @@
 SOURCE = \
-icoReactingMultiphaseInterFoamT2.C \
+icoReactingMultiphaseInterFoamT.C \
 
 # sources

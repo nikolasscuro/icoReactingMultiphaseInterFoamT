@@ -1,4 +1,4 @@
-volScalarField FLiNaK
+volScalarField FLiNaK_Solid
 (
     IOobject
     (
@@ -13,7 +13,7 @@ volScalarField FLiNaK
 );
 
 
-    volScalarField SALTsoln
+    volScalarField FLiNaK_Liquid
     (
         IOobject
         (

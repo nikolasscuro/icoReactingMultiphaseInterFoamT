@@ -24,7 +24,7 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Application
-    icoReactingMultiphaseInterFoam
+    icoReactingMultiphaseInterFoamT
 
 Group
     grpMultiphaseSolvers
@@ -39,9 +39,13 @@ Description
 
     Turbulence modelling is generic, i.e. laminar, RAS or LES may be selected.
 
+++ Numerical Coupling to Thermochimica code for molten salt application
+
+
 \*---------------------------------------------------------------------------*/
 #include <stdio.h>
 #include <math.h>
+#include <cmath>
 #include <cstring>
 #include <iostream>
 #include <fstream>
@@ -164,20 +168,32 @@ int main(int argc, char *argv[])
             }
         }
 
-        for (phaseModel& phase : fluid.phases())
-        {
-          forAll(phase, i)
-          {
-            {
-              Info <<  "Temperature = " << T[i] << " K" << endl;
-              Info <<  "Pressure = " << p[i] << " Pa" << endl;
-              Info <<  "Cell = " << i << endl;
-              Info << endl << endl;
-              #include "ThermochimicaCalc.H"
-	            Info<< "Time = " << runTime.timeName() << endl;
-            }
-          }
-        }
+
+scalar a = runTime.value();
+scalar b = 10;
+scalar c = std::fmod(a,b);
+label nCells = returnReduce(mesh.cells().size(), sumOp<label>());
+Info << "Remainder: " << c << nl;
+
+
+if((c < 0.0000001) || (c > 9.999 && c < 10.001))
+ {
+   //for (phaseModel& phase : fluid.phases())
+   {
+     forAll(T, i)
+     {
+      //Info<< nl;
+      //Info<< nl;
+      //Info<< "**********************************" << nl;
+      //Info<< "Current Time = " << runTime.value() << endl;
+      //Info <<  "Temperature = " << T[i] << " K" << endl;
+      //Info <<  "Pressure = " << p[i] << " Pa" << endl;
+      //Info <<  "Cell = " << i << endl;
+        Info << i+1 << "/" << nCells << endl;
+        #include "ThermochimicaCalc.H"
+     }
+   }
+ }
 
 
         rho = fluid.rho();

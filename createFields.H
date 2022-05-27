@@ -163,7 +163,47 @@
         fluid.Cp()
     );
 
+    Info<< "mu\n" << endl;
+    volScalarField mu
+    (
+        IOobject
+        (
+            "mu",
+            runTime.timeName(),
+            mesh,
+            IOobject::NO_READ,
+            IOobject::AUTO_WRITE
+        ),
+        fluid.mu()
+    );
 
+    Info<< "nu\n" << endl;
+    volScalarField nu_t
+    (
+        IOobject
+        (
+            "nu_t",
+            runTime.timeName(),
+            mesh,
+            IOobject::NO_READ,
+            IOobject::AUTO_WRITE
+        ),
+        turbulence->nut()
+    );
+
+    Info<< "kappa\n" << endl;
+    volScalarField kappa
+    (
+        IOobject
+        (
+            "kappa",
+            runTime.timeName(),
+            mesh,
+            IOobject::NO_READ,
+            IOobject::AUTO_WRITE
+        ),
+        fluid.kappa()
+    );
 
     Info<< "Creating field kinetic energy K\n" << endl;
     volScalarField K("K", 0.5*magSqr(U));
